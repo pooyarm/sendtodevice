@@ -10,6 +10,7 @@ import { reactReduxFirebase } from 'react-redux-firebase';
 firebase.initializeApp(firebaseConfig);
 
 const rrfConfig = {
+    userProfile: 'profile'
 };
 
 export const createStoreWithFirebase = compose(
