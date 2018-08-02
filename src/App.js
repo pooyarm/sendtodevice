@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import { Button, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
 import withRoot from './styles/theme.js';
 
 class App extends Component {
