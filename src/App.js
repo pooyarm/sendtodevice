@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-
 import {connect} from 'react-redux';
+
+import { Button, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import withRoot from './styles/theme.js';
 
 class App extends Component {
   render() {
+    console.log('this.props', this.props);
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
+        <Typography variant="display1" gutterBottom>Welcome to React</Typography>
+        <Typography variant="display2" gutterBottom>
           To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        </Typography>
+        <Button variant="contained" color="primary">Is this a Button?</Button>
       </div>
     );
   }
@@ -19,11 +22,16 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   console.log('state',state);
-  return {}
+  return {
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withRoot(
+    App
+  )
+);

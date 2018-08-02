@@ -5,9 +5,10 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store.js';
 
-import './styles/index.css';
-
 import registerServiceWorker from './registerServiceWorker';
+
+//import './styles/index.css';
+
 
 ReactDOM.render((
     <Provider store={store}>
