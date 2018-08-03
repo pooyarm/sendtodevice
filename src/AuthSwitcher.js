@@ -5,6 +5,7 @@ import { Typography, CircularProgress } from '@material-ui/core';
 import withRoot from './styles/theme.js';
 import { getFirebase } from 'react-redux-firebase';
 import LoginPresentation from './presentations/login.js';
+import App from './App.js';
 
 class AuthSwitcher extends Component {
 	render() {
@@ -22,7 +23,7 @@ class AuthSwitcher extends Component {
             )
         } else {
             return (
-				<Typography variant="display3" gutterBottom>Welcome {this.props.auth.displayName} !</Typography>
+				<App />
             )
         }
 	}

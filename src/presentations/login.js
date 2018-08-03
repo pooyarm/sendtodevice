@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
 import { Grid, Paper, Button, Typography } from '@material-ui/core';
 
