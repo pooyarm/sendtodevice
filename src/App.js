@@ -10,7 +10,7 @@ import HeaderPresentation from './presentations/header.js';
 class App extends Component {
 	render() {
         return (
-            <div class='App'>
+            <div className='App'>
                 <HeaderPresentation
                     auth={this.props.auth}
                     handleLogout={this.props.handleLogout} />
