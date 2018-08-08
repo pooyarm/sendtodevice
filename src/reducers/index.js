@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import { firebaseReducer } from 'react-redux-firebase';
+import { firestoreReducer } from 'redux-firestore'
 
 import dbReducer from './db.js';
 import localReducer from './local.js';
@@ -10,7 +11,8 @@ const rootReducer = combineReducers({
 	db: dbReducer,
 	local: localReducer,
 	ui: uiReducer,
-	firebase: firebaseReducer
+	firebase: firebaseReducer,
+	firestore: firestoreReducer
 });
 
 export default rootReducer;
