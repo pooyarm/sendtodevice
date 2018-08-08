@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { AppBar, MenuItem, Menu, IconButton, Toolbar, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
+import withAuth from '../utils/withAuth';
 
 class HeaderPresentation extends Component {
     state = {
@@ -61,4 +62,4 @@ class HeaderPresentation extends Component {
 	}
 }
 
-export default HeaderPresentation;
+export default withAuth(HeaderPresentation);

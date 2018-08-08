@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
-import { Typography, CircularProgress } from '@material-ui/core';
-import withRoot from './styles/theme.js';
 import { getFirebase } from 'react-redux-firebase';
-import LoginPresentation from './presentations/login.js';
 import HeaderPresentation from './presentations/header.js';
+import PostForm from './containers/post.js';
+
+import {AuthProvider} from './utils/withAuth';
 
 class App extends Component {
 	render() {
         return (
-            <div className='App'>
-                <HeaderPresentation
-                    auth={this.props.auth}
-                    handleLogout={this.props.handleLogout} />
-                <Typography variant="display3" gutterBottom>Welcome {this.props.auth.displayName} !</Typography>
-            </div>
+            <AuthProvider value={this.props.auth}>
+                <div className='App'>
+                    <div>
+                        <HeaderPresentation handleLogout={this.props.handleLogout} />
+                    </div>
+                    <div className='App-container'>
+                        <PostForm />
+                    </div>
+                </div>
+            </AuthProvider>
         )
 	}
 }
