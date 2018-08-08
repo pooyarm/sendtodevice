@@ -19,7 +19,6 @@ class HeaderPresentation extends Component {
     };
 
 	render() {
-        console.log('header this.props', this.props);
         const open = Boolean(this.state.anchorEl);
 
         return (

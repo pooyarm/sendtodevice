@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import { getFirebase } from 'react-redux-firebase';
 import HeaderPresentation from './presentations/header.js';
 import PostForm from './containers/post.js';
+import List from './containers/list.js';
 
 import {AuthProvider} from './utils/withAuth';
 
@@ -17,6 +18,7 @@ class App extends Component {
                     </div>
                     <div className='App-container'>
                         <PostForm />
+                        <List />
                     </div>
                 </div>
             </AuthProvider>

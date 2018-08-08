@@ -9,7 +9,6 @@ import PostPresentation from '../presentations/post';
 import withAuth from '../utils/withAuth';
 
 const PostForm = (props) => {
-    console.log('postform', props);
     return (
         <PostPresentation sendHandler={props.send} />
     )
@@ -17,17 +16,13 @@ const PostForm = (props) => {
 
 const mapStateToProps = (state) => {
 	return {
-        auth: state.firebase.auth
 	}
 }
 
 const mapDispatchToProps = (dispatch, {firestore, auth}) => {
     var firebaseApi = getFirebase();
-    console.log('mapDispatchToProps',{firestore, auth});
 	return {
         send: (input) => {
-            // auth.uid
-            console.log('send', input);
             firestore.add({ collection: 'users/' + auth.uid + '/items' }, { text: input });
         }
     }

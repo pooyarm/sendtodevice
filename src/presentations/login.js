@@ -4,7 +4,6 @@ import { Grid, Paper, Button, Typography } from '@material-ui/core';
 
 class LoginPresentation extends Component {
 	render() {
-        console.log('this.props', this.props);
         return (
             <Grid container alignItems='center' justify='center'>
                 <Grid item xs={10} sm={8} md={4} lg={3} xl={3}>
