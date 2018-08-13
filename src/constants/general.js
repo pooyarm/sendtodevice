@@ -1,0 +1,1 @@
+export const DATE_FORMAT = 'MMMM D, YYYY on h:m a';

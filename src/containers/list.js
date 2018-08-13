@@ -30,7 +30,6 @@ const ListContainer = ({items, isLoading}) => {
 const itemsKey = (auth) => `users/${auth.uid}/items`;
 
 const mapStateToProps = (state, {auth}) => {
-    console.log('state.firestore',state.firestore);
 	return {
         items: state.firestore.ordered[itemsKey(auth)],
         isLoading: state.firestore.status.requesting[itemsKey(auth)]
@@ -47,7 +46,8 @@ export default compose(
     withAuth,
     firestoreConnect(({auth}) => [
         {
-            collection: itemsKey(auth)
+            collection: itemsKey(auth),
+            orderBy: ['createDate', 'desc'],
         }
     ]),
     connect(mapStateToProps, mapDispatchToProps)
