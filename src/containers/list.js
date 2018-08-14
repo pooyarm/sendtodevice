@@ -9,7 +9,7 @@ import withAuth from '../utils/withAuth';
 import { CircularProgress } from '@material-ui/core';
 import ListPresentation from '../presentations/list';
 
-const ListContainer = ({items, isLoading}) => {
+const ListContainer = ({items, isLoading, deleteAction}) => {
     if (isLoading) {
         return (
             <div className='flex flex-column flex-center-items margin-vertical-50'>
@@ -21,8 +21,7 @@ const ListContainer = ({items, isLoading}) => {
     } else if (!items) {
         return null;
     } else {
-        console.log('items', items);
-        return <ListPresentation items={items} />
+        return <ListPresentation items={items} deleteHandler={deleteAction} />
     }
 
 }
@@ -36,9 +35,12 @@ const mapStateToProps = (state, {auth}) => {
 	}
 }
 
-const mapDispatchToProps = (dispatch, {auth}) => {
+const mapDispatchToProps = (dispatch, {auth,firebase ,firestore}) => {
     var firebaseApi = getFirebase();
 	return {
+        deleteAction: (id) => {
+            firestore.delete({ collection: itemsKey(auth), doc: id });
+        }
     }
 }
 

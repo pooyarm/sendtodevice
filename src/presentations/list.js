@@ -7,7 +7,7 @@ class ListPresentation extends Component {
         return (
             <div className='App-list'>
                 <Grid container spacing={24} alignItems='center'>
-                    {this.props.items.map((item) => <ItemPresentation key={item.id} {...item} />)}
+                    {this.props.items.map((item) => <ItemPresentation deleteHandler={this.props.deleteHandler} key={item.id} {...item} />)}
                 </Grid>
             </div>
         );
