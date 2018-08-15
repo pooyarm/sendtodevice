@@ -1,4 +1,4 @@
-package com.sendtodevice;
+package com.pooyarm.sendtodevice;
 
 import com.facebook.react.ReactActivity;
 

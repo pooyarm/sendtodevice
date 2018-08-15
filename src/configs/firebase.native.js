@@ -11,9 +11,9 @@ const reduxFirebaseConfig = {
     userProfile: 'users', // save users profiles to 'users' collection
 };
 
-const firebase = RNFirebase.initializeApp(reactNativeFirebaseConfig);
+const firebase = RNFirebase.app(); //.initializeApp(reactNativeFirebaseConfig);
 
-export default compose(
+export const createStoreWithFirebase = compose(
     reactReduxFirebase(firebase, reduxFirebaseConfig),
     reduxFirestore(firebase)
 )(createStore);
