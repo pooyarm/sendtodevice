@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import { getFirebase } from 'react-redux-firebase';
-import { createStoreWithFirebase } from './configs/firebase.js';
+import { createStoreWithFirebase } from './configs/firebase';
 
 import rootReducer from './reducers/index.js';
 import mockMiddleware from './middlewares/mock.js';

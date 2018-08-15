@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import AuthSwitcher from './AuthSwitcher';
+import AuthSwitcher from './AuthSwitcher.web.js';
 import { Provider } from 'react-redux';
 import store from './store.js';
 

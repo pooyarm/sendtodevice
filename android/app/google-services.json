@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "789924729347",
+    "firebase_url": "https://send-to-device-b2cd8.firebaseio.com",
+    "project_id": "send-to-device-b2cd8",
+    "storage_bucket": "send-to-device-b2cd8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:789924729347:android:196c7cde26488461",
+        "android_client_info": {
+          "package_name": "com.pooyarm.sendtodevice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "789924729347-e70hglf0okkbrohjsblbv24l03jtrj2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcOgxkRmOf5aP812FE_4coCuDojVE0W6A"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
