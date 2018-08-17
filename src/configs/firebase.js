@@ -15,8 +15,11 @@ const firestore = firebase.firestore();
 const settings = {timestampsInSnapshots: true};
 firestore.settings(settings);
 
+firebase.messaging().usePublicVapidKey(firebaseConfig.publicVapidKey);
+
 const rrfConfig = {
-    userProfile: 'profile'
+    userProfile: 'profile',
+    useFirestoreForProfile: true
 };
 
 export const createStoreWithFirebase = compose(

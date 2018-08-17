@@ -6,6 +6,7 @@ import withRoot from './styles/theme.js';
 import { getFirebase } from 'react-redux-firebase';
 import LoginPresentation from './presentations/login.js';
 import App from './App.js';
+import { AuthProvider } from './utils/withAuth.js';
 
 class AuthSwitcher extends Component {
 	render() {
@@ -23,7 +24,9 @@ class AuthSwitcher extends Component {
             )
         } else {
             return (
-				<App />
+                <AuthProvider value={this.props.auth}>
+				    <App />
+                </AuthProvider>
             )
         }
 	}
