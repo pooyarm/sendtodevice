@@ -14,7 +14,7 @@ class PostPresentation extends Component {
     }
 
     onClick() {
-        this.props.sendHandler(this.state.value);
+        this.props.sendHandler(this.state.value.trim());
         this.setState({value: ''});
     }
 
@@ -46,6 +46,7 @@ class PostPresentation extends Component {
                                     <Button
                                         variant="contained"
                                         color="primary"
+                                        disabled={!(this.state.value && this.state.value.trim() != '')}
                                         onClick={this.onClick.bind(this)}>Send</Button>
                                 </Grid>
                             </Grid>
