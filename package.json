@@ -21,7 +21,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
-    "sw": "./node_modules/.bin/webpack --config config/webpack.config.sw.js"
+    "sw": "webpack --mode production --config webpack.config.sw.js"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
