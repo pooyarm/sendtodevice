@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 import localStorage from 'localStorage';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import 'firebase/messaging';
 
 import { getFirebase } from 'react-redux-firebase';
 import HeaderPresentation from './presentations/header.js';
@@ -33,7 +34,6 @@ class App extends Component {
         const messaging = firebase.messaging();
         messaging.getToken().then(function(currentToken) {
             if (currentToken) {
-                console.log('currentToken',currentToken);
                 if (currentToken != lastToken) {
                     this.props.setToken(currentToken, lastToken);
                     localStorage.setItem('lastToken', currentToken);
