@@ -4,7 +4,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlPlugin = new HtmlWebPackPlugin({
     template: "./src/index.html",
-    filename: "index.html"
+    filename: path.resolve('./public/',"index.html")
 });
 
 module.exports = (env, args) => {
@@ -13,8 +13,8 @@ module.exports = (env, args) => {
     return {
         entry: "./src/index.js",
         output: {
-            path: path.resolve('./public'),
-            filename: 'bundled.js'
+            path: path.resolve('./public/builds'),
+            filename: 'bundled.[chunkhash].js'
         },
         module: {
             rules: [
