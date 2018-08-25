@@ -25,8 +25,14 @@ self.addEventListener('notificationclick', (e) => {
 
     e.waitUntil(
         clients.matchAll({includeUncontrolled: true, type: 'window'}).then((windowClients) => {
-            var targetClient = windowClients[0];
-            targetClient.focus && targetClient.focus();
+            if (windowClients.length > 0) {
+                var targetClient = windowClients[0];
+                targetClient.focus && targetClient.focus();
+            } else {
+                e.waitUntil(
+                    clients.openWindow(self.origin)
+                );
+            }
         })
     );
 });
