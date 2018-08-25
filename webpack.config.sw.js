@@ -9,7 +9,7 @@ module.exports = (env, args) => {
         mode: 'development',
         entry: './src/sw/notification.js',
         output: {
-            path: path.resolve(__dirname, "../public"),
+            path: path.resolve(__dirname, "./public"),
             filename: 'firebase-messaging-sw.js',
         },
         resolve: {

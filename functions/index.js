@@ -20,7 +20,6 @@ exports.sendNotifications =
 		const {userId, itemId} = context.params;
 		const data = snap.data();
 		
-		console.log('started');
 		console.log('context.params',context.params);
 		console.log('data', data);
 		
@@ -35,10 +34,10 @@ exports.sendNotifications =
 		if (tokens.length === 0) return true;
 
 		const payload = {
-			notification: {
+			data: {
 				title: 'Arrived at your device!',
 				body: data.text,
-				//icon: follower.photoURL
+				icon: userProfile.get('avatarUrl') || null
 			}
 		};
 

@@ -37,6 +37,7 @@ module.exports = (env, args) => {
         devServer: {
             contentBase: path.join(__dirname, 'public'),
             compress: true,
+            //host: '192.168.1.6',
             port: 80
         }
     }

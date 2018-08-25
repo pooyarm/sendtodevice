@@ -27,12 +27,17 @@ class App extends Component {
             console.log('token refreshed');
             this.getToken();
         }.bind(this));
+
+        messaging.onMessage((payload) => {
+            console.log('onMessage', payload);
+        });
     }
 
     getToken() {
         var lastToken = localStorage.getItem('lastToken');
         const messaging = firebase.messaging();
         messaging.getToken().then(function(currentToken) {
+            console.log('currentToken', currentToken);
             if (currentToken) {
                 if (currentToken != lastToken) {
                     this.props.setToken(currentToken, lastToken);
