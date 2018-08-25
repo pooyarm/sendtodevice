@@ -2,13 +2,15 @@ const path = require('path');
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-const htmlPlugin = new HtmlWebPackPlugin({
-    template: "./src/index.html",
-    filename: path.resolve('./public/',"index.html")
-});
-
 module.exports = (env, args) => {
     process.env.NODE_ENV = args.mode;
+
+    var htmlPoint = 'index.html';
+    if (process.env.NODE_ENV == 'production') htmlPoint = path.resolve('./public/',htmlPoint);
+    const htmlPlugin = new HtmlWebPackPlugin({
+        template: "./src/index.html",
+        filename: htmlPoint
+    });
     
     return {
         entry: "./src/index.js",
