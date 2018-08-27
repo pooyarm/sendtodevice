@@ -36,25 +36,6 @@ const mapDispatchToProps = (dispatch, {auth}) => {
     return {
         handleLogout: () => {
             firebaseApi.logout();
-        },
-        setToken: (newToken, lastToken, currentTokens) => {
-            console.log('currentTokens',currentTokens);
-            if (Array.isArray(currentTokens)) {
-                currentTokens = currentTokens.concat();
-            } else {
-                currentTokens = [];
-            }
-
-            if (currentTokens.indexOf(newToken) > -1) return true;
-
-            if (lastToken) {
-                var i = currentTokens.indexOf(lastToken);
-                if (i > -1)
-                    currentTokens.splice(i, 1);
-            }
-
-            currentTokens.push(newToken);
-            firebaseApi.updateProfile({ tokens: currentTokens });
         }
     }
 }
