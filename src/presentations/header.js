@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { AppBar, MenuItem, Menu, IconButton, Toolbar, Typography } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import withAuth from '../utils/withAuth';
+import NotificationSwitch from '../containers/notificationSwitch';
 
 class HeaderPresentation extends Component {
     state = {
@@ -28,6 +28,7 @@ class HeaderPresentation extends Component {
                         Send To Device
                     </Typography>
                     <div>
+                        <NotificationSwitch/>
                         <IconButton
                             aria-owns={open ? 'menu-appbar' : null}
                             aria-haspopup="true"

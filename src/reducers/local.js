@@ -1,11 +1,28 @@
-import { combineReducers } from 'redux';
+import localStorage from 'localStorage';
 
-const user_reducer = (user = {}, action) => {
-	return user;
+import { ACTION_SET_LOCAL_TOKEN, ACTION_SET_ENABLE_NOTIFICATION } from "../constants/actions";
+
+console.log((localStorage.getItem('isNotificationEnable') !== null && localStorage.getItem('isNotificationEnable') !== undefined)? localStorage.getItem('isNotificationEnable') : 1);
+
+const defaultData = {
+    lastToken: localStorage.getItem('lastToken'),
+    isNotificationEnable: (localStorage.getItem('isNotificationEnable') !== null && localStorage.getItem('isNotificationEnable') !== undefined)? localStorage.getItem('isNotificationEnable') : 1
 };
 
-const localReducer = combineReducers({
-    user: user_reducer
-});
+const localReducer = (db = defaultData, action) => {
+    switch(action.type) {
+        case ACTION_SET_LOCAL_TOKEN:
+            db.lastToken = action.payload;
+            localStorage.setItem('lastToken', action.payload);
+        break;
+        case ACTION_SET_ENABLE_NOTIFICATION:
+            var intFlag = (action.payload)?1:0;
+            db.isNotificationEnable = intFlag;
+            localStorage.setItem('isNotificationEnable', intFlag);
+        break;
+    }
+
+	return db;
+};
 
 export default localReducer;
