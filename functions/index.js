@@ -20,18 +20,23 @@ exports.sendNotifications =
 		const {userId, itemId} = context.params;
 		const data = snap.data();
 		
-		console.log('context.params',context.params);
-		console.log('data', data);
-		
 		// Get user profile, list of device tokens are there.
 		
 		const userProfile = await admin.firestore()
 			.doc(`/profile/${userId}`).get();
 		
+		const tokensRef = admin.firestore()
+				.collection(`/users/${userId}/tokens`);
+		const tokens = await tokensRef.get();
 		
-		const tokens = userProfile.get('tokens');
-		console.log('tokens', tokens);
-		if (tokens.length === 0) return true;
+		if (!tokens) return true;
+
+		console.log('tokens',tokens.docs);
+
+		var tokenArray = [];
+		tokens.forEach(token => {
+			tokenArray.push(token.data().token);
+		});
 
 		const payload = {
 			data: {
@@ -41,7 +46,19 @@ exports.sendNotifications =
 			}
 		};
 
-		var result = await admin.messaging().sendToDevice(tokens, payload);
-
-		return true;
+		var response = await admin.messaging().sendToDevice(tokenArray, payload);
+		// For each message check if there was an error.
+		const tokensToRemove = [];
+		response.results.forEach((result, index) => {
+			const error = result.error;
+			if (error) {
+				console.error('Failure sending notification to', tokens.docs[index], error);
+				// Cleanup the tokens who are not registered anymore.
+				if (error.code === 'messaging/invalid-registration-token' ||
+					error.code === 'messaging/registration-token-not-registered') {
+					tokensToRemove.push(tokens.docs[index].delete());
+				}
+			}
+		});
+		return Promise.all(tokensToRemove);
 	});
